@@ -1,0 +1,38 @@
+from openai import OpenAI
+
+client = OpenAI(api_key="sk-066d29efc6c54fd2b93bee5471b65907", base_url="https://api.deepseek.com")
+
+response = client.chat.completions.create(
+    model="deepseek-chat",
+    messages=[
+        # {"role": "system", "content": "You are an expert developer abhijeet, you are proficient in node.js programming language , write a code for a  to do app for daily routines , the routines are yoga , meetings , coding practices , lunch , meeting with manager , evening snacks ,movie , dinner , sleep"},
+        # {"role": "user", "content": "You are an expert developer abhijeet, you are proficient in node.js programming language , write a code for a  to do app for daily routines , the routines are yoga , meetings , coding practices , lunch , meeting with manager , evening snacks ,movie , dinner , sleep"},
+   
+
+    {"role": "system", "content": "You are an expert developer proficient in node.js."},
+    {"role": "user", "content": "Can you write code for a to-do app in node.js?"},
+    {"role": "assistant", "content": "Sure! Here’s a sample code for a to-do app in node.js..." }
+
+ ],
+
+    stream=False
+)
+
+# sourceFile = open('infra.txt', 'w')
+# print(response.choices[0].message.content, file=sourceFile)
+#     sourceFile.close()
+# else:
+#     print(response.status_code, response.text)
+
+
+# if response.status_code == 200:
+    # response_text = response.text
+    # data = json.loads(response_text)
+    # actual_response = data['response']
+sourceFile = open('dummy.txt', 'w')
+print(response.choices[0].message.content, file=sourceFile)
+sourceFile.close()
+# else:
+#     print(response.status_code, response.text)
+
+print(response.choices[0].message.content)
